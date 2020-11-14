@@ -1,11 +1,3 @@
-function setKeyCallback(...)
-  local callbacks = {}
-  callbacks["d"] = function() Debug = not Debug end
-  callbacks["q"] = function() debug.debug() end
-  callbacks["escape"] = function() love.event.push('quit') end
-  return ... or callbacks
-end
-
 local rowSize = 128
 local columnSize = 64
 local gridSize = columnSize*rowSize
@@ -22,9 +14,6 @@ function love.load()
             Colors.ref:getDimensions()
         )
     end
-    
-    love.window.setTitle("Doom Fire Effect")
-    love.window.setMode( rowSize*4+32, columnSize*4+32 )
     
     Grid = {}
     for i=1,gridSize do
@@ -64,7 +53,9 @@ function love.draw()
 end
 
 function love.keypressed(key)
-    if Callbacks[key] then
-        Callbacks[key]()
-    end
+    love.event.push('quit')
+end
+
+function love.touchpressed( id, x, y, dx, dy, pressure )
+    love.event.push('quit')
 end
