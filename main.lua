@@ -1,8 +1,10 @@
-local rowSize = 128
-local columnSize = 64
-local gridSize = columnSize*rowSize
-
 function love.load()
+    local width, height = love.window.getMode( )
+    
+    rowSize = math.floor(width/4)-8
+    columnSize = math.floor(height/4)-8
+    gridSize = columnSize*rowSize
+    
     Debug = false
     
     Colors = {}
@@ -19,8 +21,6 @@ function love.load()
     for i=1,gridSize do
         Grid[i] = 36
     end
-    
-    Callbacks = setKeyCallback()
 end
 
 Timer = 0
@@ -48,14 +48,14 @@ function love.draw()
         if force > 36 then force = 36 end
         love.graphics.draw(Colors.ref, Colors[force], x, y)
     end
-    love.graphics.print('FPS: ' .. love.timer.getFPS(), 32, 48)
-    love.graphics.print('Memory usage: ' .. math.floor(collectgarbage 'count') .. 'kb', 32, 64)
+    --love.graphics.print('FPS: ' .. love.timer.getFPS(), 32, 48)
+    --love.graphics.print('Memory usage: ' .. math.floor(collectgarbage 'count') .. 'kb', 32, 64)
 end
 
 function love.keypressed(key)
-    love.event.push('quit')
+    if key == "escape" then love.event.push('quit') end
 end
 
 function love.touchpressed( id, x, y, dx, dy, pressure )
-    love.event.push('quit')
+    --love.event.push('quit')
 end
