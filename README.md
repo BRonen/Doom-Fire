@@ -1,7 +1,7 @@
 # Doom-Fire
 Doom fire effect made with [_Löve2D_](https://love2d.org/) based on [Filipe Deschamps](https://github.com/filipedeschamps) code [here](https://github.com/filipedeschamps/doom-fire-algorithm)
 
-![Doom fire animation](/.github/doom-fire.png)
+![Doom fire animation](/.github/cover.png)
 
 ## How it works?
 firsts things first, you need to know a bit of [lua](https://www.lua.org/) (try this [quick tutorial](https://www.tutorialspoint.com/lua/lua_quick_guide.htm))
